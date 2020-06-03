@@ -1,0 +1,53 @@
+<div class="col-md-6 m-auto">
+    <div class="text-center">
+      <h1>Please fill out the questions!</h1>     
+    </div>
+  </div>
+  <%- include ('partials/messages') %>
+  
+  <div class="col-md-6 m-auto">
+    <div class="text-center">
+    <form name="questionnaire" action="/questionnaire" method="post">
+      <hr>
+      <% for(var i = 0; i < questions.length; i++) { %>
+        <% var question = questions[i] %>
+        <!--Render text question-->
+        <%if (question.type === 'text') { %>
+          <label for="<%= question.id %>"><%= question.text %></label>
+          <input type="text" id="<%= question.id %>" name="<%= question.id %>" required>
+        <% } %>
+      
+        <!--Render number question-->
+        <%if (question.type === 'number') { %>
+          <label for="<%= question.id %>"><%= question.text %></label>
+          <input type="number" id="<%= question.id %>" name="<%= question.id %>" required>
+        <% } %>
+      
+        <!--Render single-select question-->
+        <%if (question.type === 'single-select') { %>
+          <p><%= question.text %></p>
+          <% for(var j = 0; j < question.options.length; j++) { %>
+            <% var option = question.options[j] %>
+            <input type="radio" name="<%= question.id %>" value="<%= option %>" id="<%= option %>" required>
+            <%= option %>
+          <% } %>
+        <% } %>
+      
+        <!--Render single-select question-->
+        <%if (question.type === 'multi-select') { %>
+          <% for(var j = 0; j < question.options.length; j++) { %>
+            <% var option = question.options[j] %>
+            <input type="checkbox" name="<%= question.id %>" value="<%= option %>" id="<%= option %>">
+            <%= option %>
+          <% } %>
+        <% } %>
+        <hr>
+      <% } %>
+      <input class="btn btn-info btn-block" id="button" type="submit" value="Submit" >
+      
+      <a href="/dashboard" class="btn btn-info btn-block">Back</a>
+    </form>
+  
+   </div>
+  </div>
+  
