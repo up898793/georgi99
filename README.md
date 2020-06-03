@@ -10,7 +10,7 @@ Questionnaire author can download the results from the questionnaire in CSV form
 
 
 How to Install and Run
-1. Git clone the repository
+1. Git clone https://github.com/up898793/georgi99.git
 2. cd "up898793" (Open directory)
 2. Run npm install to install packages (Installs module folders)
 3. Run npm start to start the server (Starts app on: "localhost:8080")
